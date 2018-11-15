@@ -1,0 +1,10 @@
+.gridContainer {
+    width: 800px;
+    height: 600px;
+    border: 5px red solid;
+    display: grid;
+}
+
+.box {
+    /*  grid-template: repeat(gridsize, width/# of boxes) */
+}
