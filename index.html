@@ -7,14 +7,21 @@
         <meta charset="UTF-8">
     </head>
     <body>
-        <div id = 'reset'></div>
+        <div id = 'reset'>
+            <button id = 'clearButton'>Clear and resize</button>
+        </div>
         <div id = 'gridContainer'></div>
         
 
         <script>
             let gridSize = 16;
+            let drawColor = 'rgb(100, 100, 160';
             let root = document.documentElement;
             let gridContainer = document.querySelector('#gridContainer');
+            document.querySelector('#clearButton').addEventListener('click', () => {
+                reset();
+            });
+            
 
             drawGrid(gridSize);
 
@@ -27,7 +34,7 @@
                     box.id = idName;
                     let pixel = document.querySelector(`#${idName}`);
                     pixel.addEventListener('mouseenter', function(e) {
-                    e.target.style.background = 'blue';
+                    e.target.style.background = drawColor;
                     });
                 }
             }
