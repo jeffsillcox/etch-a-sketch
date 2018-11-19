@@ -7,28 +7,57 @@
         <meta charset="UTF-8">
     </head>
     <body>
-        
+        <div id = 'reset'></div>
         <div id = 'gridContainer'></div>
         
 
         <script>
             let gridSize = 16;
             let root = document.documentElement;
-            root.style.setProperty('--gridSize', gridSize);
-            let gridContainer = document.getElementById('gridContainer');
+            let gridContainer = document.querySelector('#gridContainer');
 
-            for (i = 0; i <= (gridSize * gridSize - 1); i++) {
-                let box = gridContainer.appendChild(document.createElement('div'));
-                box.classList.add('box');
-                let idName = 'b' + i;
-                box.id = idName;
-                /* let pixel = document.querySelector(idName);
-                pixel.addEventListener('mouseenter', function(e) {
-                e.target.style.background = 'blue';
-                }); */
+            drawGrid(gridSize);
+
+            function drawGrid(gridSize) {
+                root.style.setProperty('--gridSize', gridSize);
+                for (i = 0; i <= (gridSize * gridSize - 1); i++) {
+                    let box = gridContainer.appendChild(document.createElement('div'));
+                    box.classList.add('box');
+                    let idName = 'b' + i;
+                    box.id = idName;
+                    let pixel = document.querySelector(`#${idName}`);
+                    pixel.addEventListener('mouseenter', function(e) {
+                    e.target.style.background = 'blue';
+                    });
+                }
             }
 
-            
+            function clear() {
+                for (i = 0; i <= (gridSize * gridSize - 1); i++) {
+                    /* let idName = 'b' + i;
+                    let pixel = document.querySelector(`#${idName}`);
+                    pixel.style.background = 'white'; */
+
+                    while (gridContainer.firstChild) {
+                        gridContainer.removeChild(gridContainer.firstChild);
+                    }
+                }
+            }
+
+            function resize() {
+                do {
+                    gridSize = prompt('How big would you like the grid? (max 64)', 16);
+                }
+                while (gridSize <= 0 || gridSize > 64)
+                return(gridSize);
+            }
+
+            function reset() {
+                resize();
+                clear();
+                drawGrid(gridSize);
+            }
+
         </script>
 
     </body>
