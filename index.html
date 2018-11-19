@@ -4,13 +4,31 @@
     <head>
         <title>Etch-a-Sketch</title>
         <link rel = 'stylesheet' type = 'text/css' href = 'style.css'>
+        <meta charset="UTF-8">
     </head>
     <body>
         
-        <div class = 'reset'></div>
-        <div class = 'gridContainer'></div>
+        <div id = 'gridContainer'></div>
+        
 
-        <script>        
+        <script>
+            let gridSize = 16;
+            let root = document.documentElement;
+            root.style.setProperty('--gridSize', gridSize);
+            let gridContainer = document.getElementById('gridContainer');
+
+            for (i = 0; i <= (gridSize * gridSize - 1); i++) {
+                let box = gridContainer.appendChild(document.createElement('div'));
+                box.classList.add('box');
+                let idName = 'b' + i;
+                box.id = idName;
+                /* let pixel = document.querySelector(idName);
+                pixel.addEventListener('mouseenter', function(e) {
+                e.target.style.background = 'blue';
+                }); */
+            }
+
+            
         </script>
 
     </body>
