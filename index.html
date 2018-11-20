@@ -40,15 +40,9 @@
             }
 
             function clear() {
-                for (i = 0; i <= (gridSize * gridSize - 1); i++) {
-                    /* let idName = 'b' + i;
-                    let pixel = document.querySelector(`#${idName}`);
-                    pixel.style.background = 'white'; */
-
                     while (gridContainer.firstChild) {
                         gridContainer.removeChild(gridContainer.firstChild);
                     }
-                }
             }
 
             function resize() {
